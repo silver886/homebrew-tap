@@ -9,4 +9,8 @@ cask 'dupeguru-reference-modifier' do
   appcast 'https://github.com/silver886/dupeguru-reference-modifier/releases.atom'
 
   app 'dupeGuru Reference Modifier.app'
+
+  zap trash: [
+    "~/Library/Saved Application State/io.leoliu.dupeguru-reference-modifier.savedState",
+  ]
 end
