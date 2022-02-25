@@ -6,7 +6,7 @@ class Aria2Service < Formula
   sha256 "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9"
 
   def install
-    logs "No files to install . . ."
+    logs
   end
 
   service do
