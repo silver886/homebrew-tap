@@ -6,11 +6,10 @@ class Aria2Service < Formula
   sha256 "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9"
   depends_on "aria2"
 
-  s=[('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
-  @@pass="#{50.times.map { s[rand(s.length)] }.join}"
-  puts @@pass
 
   def install
+    s=[('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
+    pass="#{50.times.map { s[rand(s.length)] }.join}"
     File.open('aria2.conf', 'w') { |file| file.write(<<~EOS.strip
       ###########
       # General #
@@ -77,17 +76,15 @@ class Aria2Service < Formula
       rpc-listen-port=6800
       rpc-listen-all=false
       rpc-allow-origin-all=true
-      rpc-secret=#{@@pass}
+      rpc-secret=#{pass}
       EOS
     ) }
     rm etc/"aria2.conf"
     etc.install "aria2.conf"
     system "touch", "brew-keep"
+    system "echo", "RPC secret is: #{pass}"
+    puts "RPC secret is: #{pass}"
     prefix.install "brew-keep"
-  end
-
-  def caveats
-    "RPC secret is: #{@@pass}"
   end
 
   service do
