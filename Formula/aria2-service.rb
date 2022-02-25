@@ -22,11 +22,12 @@ class Aria2Service < Formula
       save-session=#{etc}/aria2.session
       save-session-interval=60
 
-      console-log-level=notice
+      console-log-level=warn
 
       disk-cache=64M
       file-allocation=falloc
       enable-mmap=true
+      content-disposition-default-utf8=true
 
       continue=true
       max-concurrent-downloads=8
