@@ -7,9 +7,7 @@ class Aria2Service < Formula
   depends_on "aria2"
 
   def install
-    system "echo", "${HOME}"
-    puts HOMEBREW_PREFIX
-    puts PREFIX
+    system "mkdir", "${HOME}/test"
     system "touch", "brew-keep"
     prefix.install "brew-keep"
   end
