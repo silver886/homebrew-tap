@@ -6,9 +6,10 @@ class Aria2Service < Formula
   sha256 "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9"
   depends_on "aria2"
 
+  s=[('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
+  pass=50.times.map { s[rand(s.length)] }.join
+
   def install
-    s=[('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
-    pass=50.times.map { s[rand(s.length)] }.join
     File.open('aria2.conf', 'w') { |file| file.write("""
 ###########
 # General #
