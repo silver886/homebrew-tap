@@ -8,6 +8,7 @@ class Aria2Service < Formula
 
   s=[('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
   @@pass="#{50.times.map { s[rand(s.length)] }.join}"
+  puts @@pass
 
   def install
     File.open('aria2.conf', 'w') { |file| file.write(<<~EOS.strip
