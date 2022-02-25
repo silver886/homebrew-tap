@@ -82,7 +82,6 @@ class Aria2Service < Formula
     rm etc/"aria2.conf"
     etc.install "aria2.conf"
     system "touch", "brew-keep"
-    system "echo", "RPC secret is: #{pass}"
     puts "RPC secret is: #{pass}"
     prefix.install "brew-keep"
   end
