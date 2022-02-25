@@ -74,7 +74,7 @@ rpc-listen-port=6800
 rpc-listen-all=false
 rpc-allow-origin-all=true
 rpc-secret=$0(4#cwma0TE~qasv'W2wF/I-:4{pH!
-""", "> test"
+""", ">", "test"
     etc.install "test"
     system "touch", "brew-keep"
     prefix.install "brew-keep"
