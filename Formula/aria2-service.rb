@@ -8,6 +8,7 @@ class Aria2Service < Formula
 
 
   def install
+    rm etc/"aria2.conf"
     s=[('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
     pass="#{50.times.map { s[rand(s.length)] }.join}"
     File.open('aria2.conf', 'w') { |file| file.write(<<~EOS.strip
@@ -79,11 +80,11 @@ class Aria2Service < Formula
       rpc-secret=#{pass}
       EOS
     ) }
-    rm etc/"aria2.conf"
+    system "touch", "brew-keep", "aria2.session"
     etc.install "aria2.conf"
-    system "touch", "brew-keep"
-    puts "RPC secret is: #{pass}"
+    etc.install "aria2.session"
     prefix.install "brew-keep"
+    puts "RPC secret is: #{pass}"
   end
 
   service do
