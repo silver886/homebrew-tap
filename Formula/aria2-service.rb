@@ -7,7 +7,7 @@ class Aria2Service < Formula
   depends_on "aria2"
 
   s=[('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
-  @@pass=50.times.map { s[rand(s.length)] }.join
+  @@pass="#{50.times.map { s[rand(s.length)] }.join}"
 
   def install
     File.open('aria2.conf', 'w') { |file| file.write("""
