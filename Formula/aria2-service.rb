@@ -14,7 +14,6 @@ class Aria2Service < Formula
   service do
     run [HOMEBREW_PREFIX/"bin/aria2c", "--conf", etc/"aria2.conf"]
     keep_alive true
-    working_dir HOMEBREW_PREFIX
     log_path var/"log/aria2.log"
     error_log_path var/"log/aria2.log"
   end
