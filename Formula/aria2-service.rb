@@ -9,7 +9,7 @@ class Aria2Service < Formula
   def install
     s=[('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
     pass=50.times.map { s[rand(s.length)] }.join
-    File.open('config', 'w') { |file| file.write("""
+    File.open('aria2.conf', 'w') { |file| file.write("""
 ###########
 # General #
 ###########
@@ -77,7 +77,6 @@ rpc-listen-all=false
 rpc-allow-origin-all=true
 rpc-secret=#{pass}
 """.strip) }
-        inreplace "somefile.cfg", /look[for]what?/, "replace by #{bin}/tool"
     etc.install "aria2.conf"
     puts "RPC secret is: #{pass}"
     system "touch", "brew-keep"
