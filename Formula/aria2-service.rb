@@ -7,74 +7,7 @@ class Aria2Service < Formula
   depends_on "aria2"
 
   def install
-    system "cat", """
-###########
-# General #
-###########
-
-dir=${HOME}/Downloads
-
-input-file={{}}/aria2.session
-save-session=${HOME}/aria2.session
-save-session-interval=60
-
-console-log-level=notice
-
-disk-cache=64M
-file-allocation=falloc
-enable-mmap=true
-
-continue=true
-max-concurrent-downloads=8
-
-##################
-# HTTP(S)/(S)FTP #
-##################
-
-max-connection-per-server=16
-split=16
-min-split-size=8M
-stream-piece-selector=geom
-
-###########
-# HTTP(S) #
-###########
-
-user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:97.0) Gecko/20100101 Firefox/97.0
-referer=*
-http-no-cache=true
-
-##############
-# BitTorrent #
-##############
-
-follow-torrent=true
-seed-time=0
-listen-port=51413
-
-enable-dht=true
-enable-dht6=true
-dht-listen-port=6969
-
-bt-max-peers=0
-enable-peer-exchange=true
-peer-id-prefix=-TR3000-
-peer-agent=Transmission/3.00
-
-bt-hash-check-seed=true
-bt-seed-unverified=true
-bt-save-metadata=true
-
-#######
-# RPC #
-#######
-
-enable-rpc=true
-rpc-listen-port=6800
-rpc-listen-all=false
-rpc-allow-origin-all=true
-rpc-secret=$0(4#cwma0TE~qasv'W2wF/I-:4{pH!
-""", ">", "test"
+    File.open('test', 'w') { |file| file.write("your text") }
     etc.install "test"
     system "touch", "brew-keep"
     prefix.install "brew-keep"
