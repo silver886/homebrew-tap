@@ -10,74 +10,75 @@ class Aria2Service < Formula
   @@pass="#{50.times.map { s[rand(s.length)] }.join}"
 
   def install
-    File.open('aria2.conf', 'w') { |file| file.write("""
-###########
-# General #
-###########
+    File.open('aria2.conf', 'w') { |file| file.write(<<-EOS.undent
+      ###########
+      # General #
+      ###########
 
-dir=${HOME}/Downloads
+      dir=${HOME}/Downloads
 
-input-file=#{etc}/aria2.session
-save-session=#{etc}/aria2.session
-save-session-interval=60
+      input-file=#{etc}/aria2.session
+      save-session=#{etc}/aria2.session
+      save-session-interval=60
 
-console-log-level=notice
+      console-log-level=notice
 
-disk-cache=64M
-file-allocation=falloc
-enable-mmap=true
+      disk-cache=64M
+      file-allocation=falloc
+      enable-mmap=true
 
-continue=true
-max-concurrent-downloads=8
+      continue=true
+      max-concurrent-downloads=8
 
-##################
-# HTTP(S)/(S)FTP #
-##################
+      ##################
+      # HTTP(S)/(S)FTP #
+      ##################
 
-max-connection-per-server=16
-split=16
-min-split-size=8M
-stream-piece-selector=geom
+      max-connection-per-server=16
+      split=16
+      min-split-size=8M
+      stream-piece-selector=geom
 
-###########
-# HTTP(S) #
-###########
+      ###########
+      # HTTP(S) #
+      ###########
 
-user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:97.0) Gecko/20100101 Firefox/97.0
-referer=*
-http-no-cache=true
+      user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:97.0) Gecko/20100101 Firefox/97.0
+      referer=*
+      http-no-cache=true
 
-##############
-# BitTorrent #
-##############
+      ##############
+      # BitTorrent #
+      ##############
 
-follow-torrent=true
-seed-time=0
-listen-port=51413
+      follow-torrent=true
+      seed-time=0
+      listen-port=51413
 
-enable-dht=true
-enable-dht6=true
-dht-listen-port=6969
+      enable-dht=true
+      enable-dht6=true
+      dht-listen-port=6969
 
-bt-max-peers=0
-enable-peer-exchange=true
-peer-id-prefix=-TR3000-
-peer-agent=Transmission/3.00
+      bt-max-peers=0
+      enable-peer-exchange=true
+      peer-id-prefix=-TR3000-
+      peer-agent=Transmission/3.00
 
-bt-hash-check-seed=true
-bt-seed-unverified=true
-bt-save-metadata=true
+      bt-hash-check-seed=true
+      bt-seed-unverified=true
+      bt-save-metadata=true
 
-#######
-# RPC #
-#######
+      #######
+      # RPC #
+      #######
 
-enable-rpc=true
-rpc-listen-port=6800
-rpc-listen-all=false
-rpc-allow-origin-all=true
-rpc-secret=#{@@pass}
-""".strip) }
+      enable-rpc=true
+      rpc-listen-port=6800
+      rpc-listen-all=false
+      rpc-allow-origin-all=true
+      rpc-secret=#{@@pass}
+      EOS
+      .strip) }
     rm etc/"aria2.conf"
     etc.install "aria2.conf"
     system "touch", "brew-keep"
