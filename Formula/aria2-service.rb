@@ -8,8 +8,8 @@ class Aria2Service < Formula
 
   def install
     system "echo", "${HOME}"
-    put HOMEBREW_PREFIX
-    put PREFIX
+    puts HOMEBREW_PREFIX
+    puts PREFIX
     system "touch", "brew-keep"
     prefix.install "brew-keep"
   end
