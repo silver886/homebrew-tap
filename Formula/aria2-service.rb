@@ -10,7 +10,7 @@ class Aria2Service < Formula
   @@pass="#{50.times.map { s[rand(s.length)] }.join}"
 
   def install
-    File.open('aria2.conf', 'w') { |file| file.write(<<-EOS.undent
+    File.open('aria2.conf', 'w') { |file| file.write(<<~EOS.strip
       ###########
       # General #
       ###########
@@ -78,7 +78,7 @@ class Aria2Service < Formula
       rpc-allow-origin-all=true
       rpc-secret=#{@@pass}
       EOS
-      .strip) }
+    ) }
     rm etc/"aria2.conf"
     etc.install "aria2.conf"
     system "touch", "brew-keep"
