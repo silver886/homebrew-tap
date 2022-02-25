@@ -78,7 +78,7 @@ rpc-listen-all=false
 rpc-allow-origin-all=true
 rpc-secret=#{@@pass}
 """.strip) }
-    rm etc"/aria2.conf"
+    rm etc/"aria2.conf"
     etc.install "aria2.conf"
     system "touch", "brew-keep"
     prefix.install "brew-keep"
