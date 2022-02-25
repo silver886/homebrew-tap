@@ -78,9 +78,12 @@ rpc-allow-origin-all=true
 rpc-secret=#{pass}
 """.strip) }
     etc.install "aria2.conf"
-    puts "RPC secret is: #{pass}"
     system "touch", "brew-keep"
     prefix.install "brew-keep"
+  end
+
+  def caveats
+    "RPC secret is: #{pass}"
   end
 
   service do
