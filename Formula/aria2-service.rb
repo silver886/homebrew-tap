@@ -5,6 +5,9 @@ class Aria2Service < Formula
   url "https://example.com"
   sha256 "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9"
 
+  def install
+  end
+
   service do
     run [opt_bin/"aria2c", "--conf", etc/"aria2.conf"]
     keep_alive true
