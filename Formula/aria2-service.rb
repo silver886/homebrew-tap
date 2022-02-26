@@ -10,6 +10,7 @@ class Aria2Service < Formula
   def install
     pass = ""
     if File.file?(etc/"aria2.conf")
+      puts "OH!"
       File.open(etc/"aria2.conf").each do |line|
         if line.include?('rpc-secret=')
           puts "#{line[11..-1]}"
