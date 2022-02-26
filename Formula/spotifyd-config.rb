@@ -7,7 +7,12 @@ class SpotifydConfig < Formula
   depends_on "spotifyd"
 
   def install
-    File.open(ENV["HOME"]/".config/spotifyd/spotifyd.conf", "w") { |file| file.write(<<~EOS.strip
+    system "touch", "brew-keep"
+    prefix.install "brew-keep"
+  end
+
+  def post_install
+    File.open("#{ENV["HOME"]}/.config/spotifyd/spotifyd.conf", "w") { |file| file.write(<<~EOS.strip
       [global]
       username = "{{user_name}}"
       use_keyring = true
@@ -23,13 +28,11 @@ class SpotifydConfig < Formula
       zeroconf_port = 57621
       EOS
     ) }
-    system "touch", "brew-keep"
-    prefix.install "brew-keep"
   end
 
   def caveats
     puts <<~EOS.strip
-      Preconfigured config file has installed in `#{ENV["HOME"]/".config/spotifyd/"}`.
+      Preconfigured config file has installed in `#{ENV["HOME"]}/.config/spotifyd/`.
       Replace `{{user_name}}` and `{{device_name}}` brfore using it.
       If no password was set, use `security add-generic-password -s spotasdfifyd -D rust-keyring -a {{user_name}} -T '' -w` to config one.
     EOS
