@@ -8,9 +8,19 @@ class Aria2Service < Formula
 
 
   def install
-    rm etc/"aria2.conf"
-    s=[('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
-    pass="#{50.times.map { s[rand(s.length)] }.join}"
+    puts etc/"aria2.conf"
+    if File.file?(etc/"aria2.conf")
+      File.open(etc/"aria2.conf").each do |line|
+        if line.include?('rpc-secret=')
+          puts "line: #{line}"
+          puts "#{line[11..-1]}"
+        end
+      end
+    else
+      s=[('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
+      pass="#{50.times.map { s[rand(s.length)] }.join}"
+    end
+    puts pass
     File.open('aria2.conf', 'w') { |file| file.write(<<~EOS.strip
       ###########
       # General #
