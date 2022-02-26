@@ -8,6 +8,7 @@ class Aria2Service < Formula
 
 
   def install
+    pass = ""
     if File.file?(etc/"aria2.conf")
       File.open(etc/"aria2.conf").each do |line|
         if line.include?('rpc-secret=')
@@ -16,8 +17,8 @@ class Aria2Service < Formula
         end
       end
     else
-      s=[('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
-      pass="#{50.times.map { s[rand(s.length)] }.join}"
+      s = [('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
+      pass = "#{50.times.map { s[rand(s.length)] }.join}"
     end
     File.open('aria2.conf', 'w') { |file| file.write(<<~EOS.strip
       ###########
@@ -90,6 +91,7 @@ class Aria2Service < Formula
       EOS
     ) }
     system "touch", "brew-keep", "aria2.session"
+    rm etc/"aria2.conf"
     etc.install "aria2.conf"
     etc.install "aria2.session"
     prefix.install "brew-keep"
