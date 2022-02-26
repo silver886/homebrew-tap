@@ -12,7 +12,6 @@ class Aria2Service < Formula
     if File.file?(etc/"aria2.conf")
       File.open(etc/"aria2.conf").each do |line|
         if line.include?('rpc-secret=')
-          puts "#{line[11..-1]}"
           pass = line[11..-1]
         end
       end
