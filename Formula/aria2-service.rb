@@ -17,7 +17,7 @@ class Aria2Service < Formula
       rm etc/"aria2.conf"
     else
       s = [('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
-      pass = "#{50.times.map { s[rand(s.length)] }.join}"
+      pass = "#{64.times.map { s[rand(s.length)] }.join}"
     end
     File.open('aria2.conf', 'w') { |file| file.write(<<~EOS.strip
       ###########
