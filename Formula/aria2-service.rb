@@ -1,6 +1,6 @@
 class Aria2Service < Formula
   desc "Service for aria2"
-  version "1.0.0"
+  version "1.1.0"
   homepage "https://aria2.github.io/"
   url "https://example.com"
   sha256 "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9"
@@ -89,9 +89,10 @@ rpc-allow-origin-all=true
 rpc-secret=#{pass}
 """.strip
     ) }
-    system "touch", "aria2.session"
-    prefix.install "aria2.conf"
+    system "touch", "brew-keep", "aria2.session"
+    etc.install "aria2.conf"
     etc.install "aria2.session"
+    prefix.install "brew-keep"
   end
 
   service do
