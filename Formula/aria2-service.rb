@@ -10,16 +10,16 @@ class Aria2Service < Formula
     pass = ""
     if File.file?(etc/"aria2.conf")
       File.open(etc/"aria2.conf").each do |line|
-        if line.include?('rpc-secret=')
+        if line.include?("rpc-secret=")
           pass = line[11..-1]
         end
       end
       rm etc/"aria2.conf"
     else
-      s = [('0'..'9'), ('A'..'Z'), ('a'..'z')].map(&:to_a).flatten
+      s = [("0".."9"), ("A".."Z"), ("a".."z")].map(&:to_a).flatten
       pass = "#{64.times.map { s[rand(s.length)] }.join}"
     end
-    File.open('aria2.conf', 'w') { |file| file.write(<<~EOS.strip
+    File.open("aria2.conf", "w") { |file| file.write(<<~EOS.strip
       ###########
       # General #
       ###########
