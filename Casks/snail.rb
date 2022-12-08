@@ -9,6 +9,9 @@ cask "snail" do
   homepage "https://www.murusfirewall.com/snail/"
   appcast "https://github.com/TheMurusTeam/Snail/releases.atom"
 
+  auto_updates true
+  depends_on macos: ">= :big_sur"
+
   app "Snail.app"
 
   zap trash: [
