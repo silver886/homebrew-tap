@@ -1,6 +1,6 @@
 class DnscryptProxyConfig < Formula
   desc "Config for dnscrypt-proxy"
-  version "1.0.0"
+  version "1.1.0"
   homepage "https://dnscrypt.info"
   url "https://example.com"
   sha256 "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9"
@@ -101,7 +101,7 @@ force_tcp = false
 ## increase this. Startup may be slower if you do so.
 ## Don't increase it too much. 10000 is the highest reasonable value.
 
-timeout = 100
+timeout = 2500
 
 
 ## Keepalive for HTTP (HTTPS, HTTP/2) queries, in seconds
@@ -137,7 +137,7 @@ log_level = 6
 
 ## Delay, in minutes, after which certificates are reloaded
 
-cert_refresh_delay = 480
+cert_refresh_delay = 240
 
 
 ## DNSCrypt: Create a new, unique key for every single DNS query
