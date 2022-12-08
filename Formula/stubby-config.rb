@@ -1,6 +1,6 @@
 class StubbyConfig < Formula
   desc "Config for stubby"
-  version "1.0.0"
+  version "1.1.0"
   homepage "https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby"
   url "https://example.com"
   sha256 "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9"
@@ -36,7 +36,7 @@ round_robin_upstreams: 1
 # EDNS0 option for keepalive idle timeout in milliseconds as specified in
 # https://tools.ietf.org/html/rfc7828
 # This keeps idle TLS connections open to avoid the overhead of opening a new
-# connection for every query. Note that if a given server doesn't implement 
+# connection for every query. Note that if a given server doesn't implement
 # EDNS0 keepalive and uses an idle timeout shorter than this stubby will backoff
 # from using that server because the server is always closing the connection.
 # This can degrade performance for certain configurations so reducing the
@@ -60,7 +60,7 @@ tls_backoff_time: 300
 
 # Specify the timeout in milliseconds on getting a response to an individual
 # request (default 5000)
-timeout: 250
+timeout: 2500
 
 # Set the acceptable ciphers for DNS over TLS.  With OpenSSL 1.1.1 this list is
 # for TLS1.2 and older only. Ciphers for TLS1.3 should be set with the
@@ -121,7 +121,6 @@ listen_addresses:
 # default location (see above)
 # dnssec_trust_anchors:
 #   - \"/etc/unbound/getdns-root.key\"
-
 
 ##################################  UPSTREAMS  ################################
 # Specify the list of upstream recursive name servers to send queries to
