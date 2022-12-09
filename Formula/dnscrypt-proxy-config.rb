@@ -1,13 +1,23 @@
+require "etc"
+
 class DnscryptProxyConfig < Formula
   desc "Config for dnscrypt-proxy"
-  version "1.1.0"
+  version "1.1.1"
   homepage "https://dnscrypt.info"
-  url "https://example.com"
+  url "https://example.com/index.html"
   sha256 "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9"
   depends_on "dnscrypt-proxy"
 
+  @@config_file_path = "dnscrypt-proxy.toml"
+
   def install
-    File.open("dnscrypt-proxy.toml", "w") { |file| file.write("""
+    touch prefix/"brew-keep"
+
+    mkdir_p etc/"dnscrypt-proxy.sources.d"
+
+    time = Time.now.strftime("%Y-%m-%dT%H:%M:%S.%L%z")
+    mv etc/@@config_file_path, etc/"#{@@config_file_path}.bak.#{time}", force: true
+    File.open(etc/@@config_file_path, "w").write("""
 ##################################
 #         Global settings        #
 ##################################
@@ -396,19 +406,19 @@ fragments_blocked = [
 # Skip resolvers incompatible with anonymization instead of using them directly
 
 skip_incompatible = true
-""".strip
-    ) }
-    prefix.install "dnscrypt-proxy.toml"
+""".strip)
   end
 
   def caveats
-    puts <<~EOS.strip
-      Manually execute the following commands to apply the new configuration.
+    messages = []
 
-      cp "#{etc}/dnscrypt-proxy.toml" "#{etc}/dnscrypt-proxy.toml.orig" &&
-      cp "#{prefix}/dnscrypt-proxy.toml" "#{etc}/dnscrypt-proxy.toml" &&
-      mkdir -p "#{etc}/dnscrypt-proxy.sources.d" &&
-      sudo chown nobody:nobody "#{etc}/dnscrypt-proxy.sources.d"
-    EOS
+    if Etc.getpwuid(File.stat(etc/"dnscrypt-proxy.sources.d").uid).name != "nobody" || Etc.getgrgid(File.stat(etc/"dnscrypt-proxy.sources.d").gid).name != "nobody"
+      messages << <<~EOS.strip
+        Manually execute the following commands to apply the new configuration.
+        sudo chown -R nobody:nobody "#{etc}/dnscrypt-proxy.sources.d"
+      EOS
+    end
+
+    return messages.join("\n\n")
   end
 end
