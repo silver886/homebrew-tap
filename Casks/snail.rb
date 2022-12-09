@@ -1,13 +1,13 @@
 cask "snail" do
-  version "1.0.1"
-  sha256 "e59e585b9322ea5b32c09a8bdac78b79e171f28f9290361ec2177098ee32a059"
+  version "2.0.5"
+  sha256 "aa9cf839a88fff527610cca4acb03173d3fa482c548648c66f352b3d2ea0d05f"
 
   url "https://github.com/TheMurusTeam/Snail/releases/download/v#{version}/snail-#{version}.zip",
       verified: "github.com/TheMurusTeam/Snail/"
+  appcast "https://github.com/TheMurusTeam/Snail/releases.atom"
   name "Snail"
   desc "Traffic shaping"
   homepage "https://www.murusfirewall.com/snail/"
-  appcast "https://github.com/TheMurusTeam/Snail/releases.atom"
 
   auto_updates true
   depends_on macos: ">= :big_sur"
