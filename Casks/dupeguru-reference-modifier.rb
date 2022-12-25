@@ -2,9 +2,9 @@ cask "dupeguru-reference-modifier" do
   version "0.2.2"
   sha256 "81fa50f487a5fa6f5d5ed7be062c47cfaf1116e242fb225fad1705163a4c3431"
 
-  url "https://github.com/silver886/dupeguru-reference-modifier/releases/download/v#{version}/dupeGuru.Reference.Modifier-amd64.zip",
-      verified: "github.com/silver886/dupeguru-reference-modifier/"
+  url "https://github.com/silver886/dupeguru-reference-modifier/releases/download/v#{version}/dupeGuru.Reference.Modifier-amd64.zip"
   name "dupeGuru Reference Modifier"
+  desc "A quicker way to change the reference file in dupeGuru by name."
   homepage "https://github.com/silver886/dupeguru-reference-modifier"
   appcast "https://github.com/silver886/dupeguru-reference-modifier/releases.atom"
 
