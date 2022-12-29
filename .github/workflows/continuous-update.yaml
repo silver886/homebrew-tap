@@ -23,7 +23,9 @@ jobs:
               ],
               "cask": [
                 "dupeguru-reference-modifier",
-                "snail"
+                "kdeconnect",
+                "snail",
+                "upscayl"
               ]
             }
         run: |
