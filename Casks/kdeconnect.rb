@@ -9,6 +9,7 @@ cask "kdeconnect" do
 
   livecheck do
     url "https://binary-factory.kde.org/view/MacOS/job/kdeconnect-kde_Release_macos/lastStableBuild/artifact/"
+    strategy :page_match
     regex(/href=.*?kdeconnect-kde[._-]v?(\d+(?:[.-]\d+)+)-macos-clang-x86_64\.dmg/i)
   end
 
