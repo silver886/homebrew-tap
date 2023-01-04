@@ -1,8 +1,8 @@
-cask "kdeconnect" do
+cask "kdeconnect-nightly" do
   version "22.12.0-1175"
   sha256 "26c75c039c156dc36051f6b9d4d728f3c6fc9262acdbdd5b34887a5322a45dfd"
 
-  url "https://binary-factory.kde.org/view/MacOS/job/kdeconnect-kde_Release_macos/lastStableBuild/artifact/kdeconnect-kde-#{version}-macos-clang-x86_64.dmg"
+  url "https://binary-factory.kde.org/view/MacOS/job/kdeconnect-kde_Release_macos/#{version.sub(%r{.*-}, '')}/artifact/kdeconnect-kde-#{version}-macos-clang-x86_64.dmg"
   name "KDE Connect"
   desc "Enabling communication between all your devices"
   homepage "https://kdeconnect.kde.org/"
