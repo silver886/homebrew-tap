@@ -23,7 +23,7 @@ jobs:
               ],
               "cask": [
                 "dupeguru-reference-modifier",
-                "kdeconnect",
+                "kdeconnect-nightly",
                 "snail",
                 "upscayl"
               ]
