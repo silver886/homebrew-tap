@@ -22,10 +22,12 @@ jobs:
                 "spotctl"
               ],
               "cask": [
+                "balenaetcher",
                 "dupeguru-reference-modifier",
                 "kdeconnect-nightly",
                 "snail",
-                "upscayl"
+                "upscayl",
+                "xplist"
               ]
             }
         run: |
