@@ -8,6 +8,11 @@ cask "xplist" do
   desc "Cross-platform plist editor"
   homepage "https://github.com/ic005k/Xplist"
 
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
   app "Xplist.app"
 
   zap trash: [
