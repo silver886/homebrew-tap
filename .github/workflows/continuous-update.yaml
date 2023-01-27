@@ -33,6 +33,7 @@ jobs:
         run: |
           for i in $(jq -r 'keys[]' <<< $HOMEBREW); do
             for j in $(jq -r ".$i[]" <<< $HOMEBREW); do
+              j="silver886/tap/$j"
               bump=$(brew bump "--$i" $j)
               current=$(grep -E "^Current $i version" <<< "$bump" | sed -e 's|^.*: *||')
               latest=$(grep -E '^Latest livecheck version' <<< "$bump" | sed -e 's|^.*: *||')
