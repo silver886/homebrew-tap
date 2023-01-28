@@ -9,6 +9,11 @@ cask "balenaetcher" do
   desc "Tool to flash OS images to SD cards & USB drives"
   homepage "https://balena.io/etcher"
 
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
   app "balenaEtcher.app"
 
   uninstall quit: "io.balena.etcher.*"
