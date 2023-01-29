@@ -4,7 +4,6 @@ cask "balenaetcher" do
 
   url "https://github.com/balena-io/etcher/releases/download/v#{version}/balenaEtcher-#{version}.dmg",
       verified: "github.com/balena-io/etcher/"
-  appcast "https://github.com/balena-io/etcher/releases.atom"
   name "Etcher"
   desc "Tool to flash OS images to SD cards & USB drives"
   homepage "https://balena.io/etcher"

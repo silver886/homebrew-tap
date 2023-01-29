@@ -3,7 +3,6 @@ cask "xplist" do
   sha256 "0db66080fcbd447cbb14e585d237b327b7c57f4504c7283ef05a2359ecd351c3"
 
   url "https://github.com/ic005k/Xplist/releases/download/#{version}/Xplist_Mac.dmg"
-  appcast "https://github.com/ic005k/Xplist/releases.atom"
   name "Xplist"
   desc "Cross-platform plist editor"
   homepage "https://github.com/ic005k/Xplist"
