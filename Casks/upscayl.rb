@@ -9,6 +9,11 @@ cask "upscayl" do
   desc "Free and Open Source AI Image Upscaler"
   homepage "https://upscayl.github.io/"
 
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
   app "Upscayl.app"
 
   zap trash: [
