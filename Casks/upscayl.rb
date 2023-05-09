@@ -4,10 +4,14 @@ cask "upscayl" do
 
   url "https://github.com/upscayl/upscayl/releases/download/v#{version}/Upscayl-#{version}-mac.dmg",
       verified: "github.com/upscayl/upscayl/"
-  appcast "https://github.com/upscayl/upscayl/releases.atom"
   name "Upscayl"
   desc "Free and Open Source AI Image Upscaler"
   homepage "https://upscayl.github.io/"
+
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
 
   app "Upscayl.app"
 
