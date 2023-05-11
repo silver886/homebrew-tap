@@ -1,6 +1,6 @@
 cask "upscayl" do
-  version "2.0.1"
-  sha256 "13ccea5608c1e5bf88035b6614b86b00b910b6d7567a99a236b01ac10b0ef9a1"
+  version "2.5.1"
+  sha256 "bd49983105e9478d239aeb44dfd1ebf38cdc04e6e81a0de281e3093e76cd5a5d"
 
   url "https://github.com/upscayl/upscayl/releases/download/v#{version}/Upscayl-#{version}-mac.dmg",
       verified: "github.com/upscayl/upscayl/"
