@@ -30,6 +30,7 @@ jobs:
                 "xplist"
               ]
             }
+          HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
         run: |
           for i in $(jq -r 'keys[]' <<< $HOMEBREW); do
             for j in $(jq -r ".$i[]" <<< $HOMEBREW); do
