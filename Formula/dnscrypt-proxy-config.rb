@@ -2,22 +2,22 @@ require "etc"
 
 class DnscryptProxyConfig < Formula
   desc "Config for dnscrypt-proxy"
-  version "1.1.1"
   homepage "https://dnscrypt.info"
   url "https://example.com/index.html"
+  version "1.1.1"
   sha256 "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9"
   depends_on "dnscrypt-proxy"
-
-  @@config_file_path = "dnscrypt-proxy.toml"
 
   def install
     touch prefix/"brew-keep"
 
+    config_file_path = "dnscrypt-proxy.toml"
+
     mkdir_p etc/"dnscrypt-proxy.sources.d"
 
     time = Time.now.strftime("%Y-%m-%dT%H:%M:%S.%L%z")
-    mv etc/@@config_file_path, etc/"#{@@config_file_path}.bak.#{time}", force: true
-    File.open(etc/@@config_file_path, "w").write("""
+    mv etc/config_file_path, etc/"#{config_file_path}.bak.#{time}", force: true
+    File.write(etc/config_file_path, "
 ##################################
 #         Global settings        #
 ##################################
@@ -406,7 +406,7 @@ fragments_blocked = [
 # Skip resolvers incompatible with anonymization instead of using them directly
 
 skip_incompatible = true
-""".strip)
+".strip)
   end
 
   def caveats
@@ -419,6 +419,6 @@ skip_incompatible = true
       EOS
     end
 
-    return messages.join("\n\n")
+    messages.join("\n\n")
   end
 end

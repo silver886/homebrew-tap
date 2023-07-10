@@ -1,19 +1,19 @@
 class StubbyConfig < Formula
   desc "Config for stubby"
-  version "1.1.1"
   homepage "https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby"
   url "https://example.com/index.html"
+  version "1.1.1"
   sha256 "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9"
   depends_on "stubby"
-
-  @@config_file_path = "stubby/stubby.yml"
 
   def install
     touch prefix/"brew-keep"
 
+    config_file_path = "stubby/stubby.yml"
+
     time = Time.now.strftime("%Y-%m-%dT%H:%M:%S.%L%z")
-    mv etc/@@config_file_path, etc/"#{@@config_file_path}.bak.#{time}", force: true
-    File.open(etc/@@config_file_path, "w").write("""
+    mv etc/config_file_path, etc/"#{config_file_path}.bak.#{time}", force: true
+    File.write(etc/config_file_path, "
 ########################## BASIC & PRIVACY SETTINGS ############################
 resolution_type: GETDNS_RESOLUTION_STUB
 
@@ -166,6 +166,6 @@ upstream_recursive_servers:
     tls_auth_name: cloudflare-dns.com
   - address_data: 2606:4700:4700::1001
     tls_auth_name: cloudflare-dns.com
-""".strip)
+".strip)
   end
 end

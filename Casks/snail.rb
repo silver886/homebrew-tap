@@ -4,10 +4,14 @@ cask "snail" do
 
   url "https://github.com/TheMurusTeam/Snail/releases/download/v#{version}/snail-#{version}.zip",
       verified: "github.com/TheMurusTeam/Snail/"
-  appcast "https://github.com/TheMurusTeam/Snail/releases.atom"
   name "Snail"
   desc "Traffic shaping"
   homepage "https://www.murusfirewall.com/snail/"
+
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
 
   auto_updates true
   depends_on macos: ">= :big_sur"
