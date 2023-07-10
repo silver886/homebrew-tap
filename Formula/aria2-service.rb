@@ -1,34 +1,34 @@
 class Aria2Service < Formula
   desc "Service for aria2"
-  version "1.1.1"
   homepage "https://aria2.github.io/"
   url "https://example.com/index.html"
+  version "1.1.1"
   sha256 "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9"
   depends_on "aria2"
-
-  @@config_file_path = "aria2.conf"
 
   def install
     touch prefix/"brew-keep"
 
+    config_file_path = "aria2.conf"
+
     pass = ""
-    if File.file?(etc/@@config_file_path)
-      File.open(etc/@@config_file_path).each do |line|
+    if File.file?(etc/config_file_path)
+      File.open(etc/config_file_path).each do |line|
         pass_match = line.match(/^rpc-secret *= *(?<pass>.*)$/)
         pass = pass_match[:pass] if pass_match
       end
     end
     if pass.empty?
       s = [("0".."9"), ("A".."Z"), ("a".."z")].map(&:to_a).flatten
-      pass = "#{64.times.map { s[rand(s.length)] }.join}"
+      pass = Array.new(64) { s[rand(s.length)] }.join
       puts "RPC secret is: #{pass}"
     end
 
     touch etc/"aria2.session"
 
     time = Time.now.strftime("%Y-%m-%dT%H:%M:%S.%L%z")
-    mv etc/@@config_file_path, etc/"#{@@config_file_path}.bak.#{time}", force: true
-    File.open(etc/@@config_file_path, "w").write("""
+    mv etc/config_file_path, etc/"#{config_file_path}.bak.#{time}", force: true
+    File.write(etc/config_file_path, "
 ###########
 # General #
 ###########
@@ -96,7 +96,7 @@ rpc-listen-port=6800
 rpc-listen-all=false
 rpc-allow-origin-all=true
 rpc-secret=#{pass}
-""".strip)
+".strip)
   end
 
   service do
