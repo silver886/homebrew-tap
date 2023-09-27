@@ -1,6 +1,6 @@
 cask "snail" do
-  version "2.0.6"
-  sha256 "37890c22b8ce29d49e6c361203853e0baf6e6889af9c2a8273297bde70d5f4e2"
+  version "2.0.7"
+  sha256 "1104aef8940a47ffb7277ab5db52b29292606619e350f464599c4ef0466d91a2"
 
   url "https://github.com/TheMurusTeam/Snail/releases/download/v#{version}/snail-#{version}.zip",
       verified: "github.com/TheMurusTeam/Snail/"
