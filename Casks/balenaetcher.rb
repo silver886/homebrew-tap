@@ -8,15 +8,12 @@ cask "balenaetcher" do
   desc "Tool to flash OS images to SD cards & USB drives"
   homepage "https://balena.io/etcher"
 
-  depends_on macos: ">= :big_sur"
-  caveat :requires_rosetta do
-    next if Homebrew::SimulateSystem.current_arch != :arm
-  end
-
   livecheck do
     url :url
     strategy :github_latest
   end
+
+  depends_on macos: ">= :big_sur"
 
   app "balenaEtcher.app"
 
@@ -28,4 +25,9 @@ cask "balenaetcher" do
     "~/Library/Preferences/io.balena.etcher.plist",
     "~/Library/Saved Application State/io.balena.etcher.savedState",
   ]
+
+  caveats do
+    requires_rosetta
+  end
+
 end
