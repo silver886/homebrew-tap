@@ -1,6 +1,6 @@
 cask "balenaetcher" do
-  version "1.18.11"
-  sha256 "251f403b79f53bbf7c558cb0b6ce085bd9d4f1fb7f70d96fdfc10ecbc493e70f"
+  version "2.1.4"
+  sha256 "52d9d20d6e1929f1032d3625361cf46d37d42e928df077746a238abeec412254"
 
   url "https://github.com/balena-io/etcher/releases/download/v#{version}/balenaEtcher-#{version}-x64.dmg",
       verified: "github.com/balena-io/etcher/"
@@ -29,5 +29,4 @@ cask "balenaetcher" do
   caveats do
     requires_rosetta
   end
-
 end
