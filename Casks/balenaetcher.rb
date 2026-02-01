@@ -8,6 +8,11 @@ cask "balenaetcher" do
   desc "Tool to flash OS images to SD cards & USB drives"
   homepage "https://balena.io/etcher"
 
+  depends_on macos: ">= :big_sur"
+  caveat :requires_rosetta do
+    next if Homebrew::SimulateSystem.current_arch != :arm
+  end
+
   livecheck do
     url :url
     strategy :github_latest
