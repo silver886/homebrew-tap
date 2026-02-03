@@ -22,7 +22,6 @@ cask "kdeconnect-nightly" do
     regex(/href=.*?kdeconnect-kde-master-(\d+)-macos-clang-x86_64\.dmg/i)
   end
 
-  app "kdeconnect-indicator.app", target: "KDE Connect.app"
   binary "#{appdir}/KDE Connect.app/Contents/MacOS/kdeconnect-cli",
          target: "kdeconnect"
 
