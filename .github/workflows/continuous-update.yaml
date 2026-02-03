@@ -25,6 +25,7 @@ jobs:
               "cask": [
                 "balenaetcher",
                 "dupeguru-reference-modifier",
+                "kdeconnect-nightly",
                 "snail",
                 "upscayl",
                 "xplist"
