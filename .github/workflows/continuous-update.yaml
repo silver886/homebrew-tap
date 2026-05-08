@@ -22,7 +22,6 @@ jobs:
                 "spotctl"
               ],
               "cask": [
-                "balenaetcher",
                 "dupeguru-reference-modifier",
                 "kdeconnect-nightly",
                 "snail",
