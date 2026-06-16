@@ -1,15 +1,15 @@
 cask "kdeconnect-nightly" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "6265"
+  version "6292"
 
   on_arm do
-    sha256 "92f9dba399c8edabda74e0ec987b12f851bbca2cde3647d876255d6fb7d15b4d"
+    sha256 "91115ec4df2261fe24b793772ebafd58f2e8759747ed3108f9e2f0d50470cac2"
 
     url "https://cdn.kde.org/ci-builds/network/kdeconnect-kde/master/macos-arm64/kdeconnect-kde-master-#{version}-macos-clang-arm64.dmg"
   end
   on_intel do
-    sha256 "66b08ab269cda6928d9fb7305d3b61dd669bceeffffa22656ad1f438f40ede58"
+    sha256 "7470c3c1d3df3d6cbc1023dffbcb4b1bac563d961885e46922ef508ae6c3964d"
 
     url "https://cdn.kde.org/ci-builds/network/kdeconnect-kde/master/macos-x86_64/kdeconnect-kde-master-#{version}-macos-clang-x86_64.dmg"
   end
